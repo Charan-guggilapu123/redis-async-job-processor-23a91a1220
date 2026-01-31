@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS jobs (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  type VARCHAR(255) NOT NULL,
+  status VARCHAR(50) NOT NULL DEFAULT 'pending',
+  priority VARCHAR(50) NOT NULL DEFAULT 'default',
+  payload JSONB NOT NULL,
+  result JSONB NULL,
+  error TEXT NULL,
+  attempts INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
